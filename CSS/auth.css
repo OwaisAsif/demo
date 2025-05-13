@@ -1,58 +1,92 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
 }
 
-.login-container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.login-container h2 {
-    margin-bottom: 20px;
+.logo {
+  width: 100px;
+  display: block;
+  margin: auto;
 }
 
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
+h2 {
+  text-align: center;
+  color: #4b296b;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.password-box {
+  display: flex;
+  align-items: center;
+}
+
+.password-box input {
+  flex: 1;
+}
+
+.eye {
+  margin-left: -30px;
+  cursor: pointer;
+}
+
+a {
+  font-size: 0.9em;
+  color: #4b296b;
+  text-decoration: underline;
+  margin-bottom: 10px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+  background-color: #3a9a00;
+  color: white;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+.alt-btn {
+  background: none;
+  border: 2px solid #3a9a00;
+  color: #3a9a00;
 }
 
-#message {
-    margin-top: 20px;
-    color: red;
+.or {
+  text-align: center;
+  margin: 10px 0;
+}
+
+footer {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.9em;
 }
